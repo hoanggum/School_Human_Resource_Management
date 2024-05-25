@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thời khóa biểu</title>
+  <link rel="stylesheet" href="/css/schedule_site.css">
+</head>
+<body>
+  <div class="timetable">
+    <div class="controls">
+      <button id="prevWeek">Tuần trước</button>
+      <input type="text" id="datepicker">
+      <button id="nextWeek">Tuần sau</button>
+    </div>
+    <div class="week">
+      <table class="schedule">
+        <thead>
+        </thead>
+        <tbody id="scheduleBody">
+          <!-- Các dòng sẽ được thêm bằng JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const prevWeekBtn = document.getElementById("prevWeek");
+      const nextWeekBtn = document.getElementById("nextWeek");
+      const scheduleBody = document.getElementById("scheduleBody");
+
+      let currentDate = new Date(); // Đặt biến currentDate ở đây để có thể truy cập từ các hàm khác nhau
+
+      // Hàm hiển thị lịch cho một tuần cụ thể
+      function showWeek() {
+        // Xóa các dòng đã hiển thị trước đó
+        scheduleBody.innerHTML = "";
+
+        // Lấy ngày đầu tuần hiện tại
+        currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 1);
+
+        // Tạo một dòng chứa thông tin về các ngày trong tuần
+        const row = document.createElement("tr");
+       
+        for (let j = 0; j < 7; j++) {
+          const day = new Date(currentDate);
+          day.setDate(currentDate.getDate() + j);
+           
+
+          const dateInfo = `${day.toLocaleDateString("vi-VN", { weekday: "long" })}\n${day.getDate()}/${day.getMonth() + 1}/${day.getFullYear()}`;
+
+          const dayCell = document.createElement("td");
+          dayCell.textContent = dateInfo;
+
+          row.appendChild(dayCell);
+        }
+
+        scheduleBody.appendChild(row);
+      }
+
+      // Hiển thị lịch cho tuần đầu tiên của năm hiện tại
+      showWeek();
+
+      // Xử lý sự kiện nút "Tuần trước"
+      prevWeekBtn.addEventListener("click", function() {
+        currentDate.setDate(currentDate.getDate() - 7);
+        showWeek();
+      });
+
+      // Xử lý sự kiện nút "Tuần sau"
+      nextWeekBtn.addEventListener("click", function() {
+        currentDate.setDate(currentDate.getDate() + 7);
+        showWeek();
+      });
+    });
+  </script>
+</body>
+</html>

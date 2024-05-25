@@ -1,0 +1,83 @@
+/* CSS cho phần hero */
+.hero {
+    position: relative; /* Đặt vị trí tương đối để có thể sử dụng absolute positioning cho các phần tử con */
+    overflow: hidden; /* Ẩn phần nội dung ra ngoài khung khi có */
+  }
+  
+  /* CSS cho phần chứa hình nền */
+  .hero-bg {
+    position: absolute; /* Đặt vị trí tuyệt đối để che phủ toàn bộ phần hero */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover; /* Đảm bảo hình nền sẽ căn chỉnh và mở rộng để phủ toàn bộ phần hero */
+    object-position: center /* Đặt vị trí z-index để đẩy phần nền xuống dưới cùng */
+  }
+  
+  /* CSS cho phần chứa nội dung */
+  .container {
+    padding: 100px 0; /* Khoảng cách nội dung từ top và bottom */
+  }
+  
+  /* CSS cho phần chứa các phần tử dọc theo trục chính */
+  .d-flex {
+    display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử theo hàng ngang */
+    flex-direction: column; /* Hiển thị các phần tử dọc theo trục chính */
+    align-items: center; /* Căn giữa các phần tử theo chiều ngang */
+  }
+  
+  /* CSS cho phần tử tiêu đề */
+  h1 {
+    font-size: 36px;
+    color: #fff;
+  }
+  
+  /* CSS cho phần tử chữ nhỏ */
+  p {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 20px; /* Khoảng cách dưới của phần tử chữ nhỏ */
+  }
+  
+  /* CSS cho phần nút "Get Started" */
+  .btn-get-started {
+    padding: 12px 24px;
+    background-color: #388da8;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-get-started:hover {
+    background-color: #27758f;
+  }
+  
+  /* CSS cho phần nút "Watch Video" */
+  .btn-watch-video {
+    padding: 12px 24px;
+    background-color: transparent;
+    color: #000000;
+    text-decoration: none;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin-left: 20px; /* Khoảng cách bên trái của phần tử nút "Watch Video" */
+  }
+  
+  .btn-watch-video:hover {
+    background-color: #b8d0ff;
+    color: #388da8;
+  }
+  .hero .d-flex {
+    flex-direction: row; /* Thay đổi hướng của flexbox từ dọc thành ngang */
+    justify-content: center; /* Căn giữa các phần tử theo chiều ngang */
+  }
+  
+  /* CSS cho nút "Get Started" */
+  .hero .btn-get-started {
+    margin-right: 20px; /* Khoảng cách bên phải của nút "Get Started" */
+  }
+  

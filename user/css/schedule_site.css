@@ -1,0 +1,151 @@
+  /* Định dạng chung cho bảng */
+  .timetable {
+    max-width: 100%;
+    margin: 20px auto;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Định dạng các nút điều hướng */
+  .controls {
+    margin-bottom: 20px;
+  }
+
+  /* Định dạng bảng lịch */
+  .schedule {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  /* Định dạng các ô tiêu đề */
+  .schedule th {
+    padding: 10px;
+    text-align: center;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+  }
+
+  /* Định dạng các ô dữ liệu */
+  .schedule td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+
+  /* Định dạng các ô dữ liệu trong tiêu đề */
+  .schedule thead td {
+    font-weight: bold;
+  }
+
+  /* Định dạng hàng chẵn */
+  .schedule tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  .employee-list-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+    .employee-item {
+      display: flex; /* Sử dụng flexbox để căn chỉnh nội dung */
+      flex-direction: column; /* Hiển thị các phần tử con theo chiều dọc */
+      align-items: center; /* Căn giữa các phần tử theo chiều ngang */
+      text-align: center; /* Căn giữa nội dung theo chiều ngang */
+      border: 1px solid #696969;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .employee-item .work-place {
+        font-size: 30px;
+        text-transform: uppercase;
+        font-weight: bold; /* Chữ to */
+    }
+
+    .employee-item .date-range {
+        margin-top: 5px; /* Khoảng cách giữa nơi công tác và ngày bắt đầu */
+        font-size: 18px; /* Kích thước font cho ngày bắt đầu và kết thúc */
+    }
+
+    .employee-item .description {
+        margin-top: 5px; /* Khoảng cách giữa ngày kết thúc và mô tả */
+        font-style: italic;
+        font-size: 20px;
+         /* Nghiêng chữ cho mô tả */
+    }
+
+  .employee-item.priority {
+    background-color: #a0d3ff; /* Màu nền xanh nhạt */
+  }
+  .employee-item.past {
+      border: 1px solid #f50303;
+      background-color: #f69b9b61; /* Màu nền xám nhạt cho các lịch đã qua */
+      color: #a40000; /* Màu chữ xám nhạt cho các lịch đã qua */
+  }
+
+  .btn-primary:hover {
+    background-color: #56a7fd; /* Màu nền khi hover */
+    border-color: #055cba; /* Màu viền khi hover */
+    color: #ffffff; /* Màu chữ khi hover */
+  }
+  .btn-primary{
+    color: #032aee;
+    background-color: #ffffff00; /* Màu nền khi hover */
+    border-color: #ffffff00; /* Màu viền khi hover */
+    font-size: 25px;
+  }
+  /* CSS cho vùng hiển thị thông báo khi không có lịch */
+  .no-schedule {
+    padding: 20px;
+    margin: 20px 0;
+    height: 400px;
+    background-color: #f8d7da; /* Màu nền đỏ nhạt */
+    border: 1px solid #f5c6cb; /* Viền đỏ */
+    border-radius: 5px; /* Bo tròn viền */
+    color: #721c24; /* Màu chữ đỏ */
+    font-size: 27px; /* Kích thước chữ */
+    text-align: center; /* Canh giữa nội dung */
+  }
+
+  .subtitle-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .subtitle {
+    display: flex;
+    align-items: center;
+  }
+
+  .rectangle {
+      width: 55px; /* Adjust width as needed */
+      height: 30px; /* Adjust height as needed */
+      margin-right: 10px; /* Adjust spacing between rectangle and text */
+      border: 1px solid #696969;
+      border-radius: 5px; /* Adjust border radius for rounded corners */
+  }
+
+  .finished {
+    border: 1px solid #f50303;
+    background-color: #f69b9b61; /* Màu nền xám nhạt cho các lịch đã qua */
+    color: #a40000; /* Color for finished schedules */
+  }
+
+  .ongoing {
+    background-color: #a0d3ff; /* Color for ongoing schedules */
+  }
+
+  .preparing {
+      background-color: rgb(250, 250, 250); /* Color for schedules being prepared */
+  }
+
+  .text {
+      font-size: 16px; /* Adjust font size as needed */
+  }
+  
+
+
