@@ -43,7 +43,7 @@
                         <a class="nav-link" href="?page=leave-request">Xin nghỉ phép</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tin Tức</a>
+                        <a class="nav-link" href="https://huit.edu.vn/vien-chuc/tin-tuc-to-chuc-nhan-su.html">Tin Tức</a>
                     </li>
                 </ul>
                 <div class="avt-img">
