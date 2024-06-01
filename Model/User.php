@@ -163,6 +163,50 @@ class User extends Db{
         $params = array(':userId' => $userId);
         return $this->selectQuery($sql, $params);
     }
+    public function updateEmployee($userId, $fullName, $birthday, $gender, $email, $address, $phone, $positionID, $deptID, $imgPath, $status) {
+        try {
+            // Begin a transaction
+            $this->beginTransaction();
+
+            // Update the users table
+            $sqlUser = "UPDATE users 
+                        SET FullName = :fullName, Birthday = :birthday, Gender = :gender, Email = :email, 
+                            Address = :address, Phone = :phone, PositionID = :positionID, DeptID = :deptID, Status = :status 
+                        WHERE UserID = :userId";
+            $paramsUser = array(
+                ':userId' => $userId,
+                ':fullName' => $fullName,
+                ':birthday' => $birthday,
+                ':gender' => $gender,
+                ':email' => $email,
+                ':address' => $address,
+                ':phone' => $phone,
+                ':positionID' => $positionID,
+                ':deptID' => $deptID,
+                ':status' => $status
+            );
+            $this->updateQuery($sqlUser, $paramsUser);
+
+            // Update the img table
+            $sqlImg = "UPDATE img SET Url = :imgPath WHERE UserID = :userId";
+            $paramsImg = array(
+                ':userId' => $userId,
+                ':imgPath' => $imgPath
+            );
+            $result = $this->updateQuery($sqlImg, $paramsImg);
+
+            // Commit the transaction
+            $this->commit();
+
+            // Return true if both queries were successful, otherwise return false
+            return $result !== false;
+        } catch (Exception $e) {
+            // Rollback the transaction if something went wrong
+            $this->rollBack();
+            throw $e;
+        }
+    }
+    
     
 }
 ?>

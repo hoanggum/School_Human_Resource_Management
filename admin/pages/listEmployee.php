@@ -96,15 +96,50 @@ if(is_array($employees) && !empty($employees)) {
         .search-container button:hover {
             background: gray;
         }
+        .import-export-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .import-export-container form,
+    .import-export-container button {
+        display: inline-block;
+    }
+    .import-export-container input[type="file"] {
+        display: inline-block;
+        padding: 10px;
+        font-size: 17px;
+        border: none;
+        border-radius: 5px;
+    }
+    .import-export-container button {
+        padding: 10px 15px;
+        background: black;
+        font-size: 17px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+    }
+    .import-export-container button:hover {
+        background: gray;
+    }
 </style>
 
 <div class="container">
+    
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Tìm kiếm...">
             <button type="button" onclick="search()">Tìm kiếm</button>
         </div>
         <h1>Danh sách nhân viên</h1>
-
+        <div class="import-export-container">
+        <form action="?page=importData" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" accept=".xlsx, .xls">
+            <button type="submit" name="importSubmit">Import</button>
+        </form>
+        <button type="button" onclick="exportToExcel()">Export</button>
+    </div>
         <div class="table-responsive">
 
         <table class="table" id="employeeTable">
@@ -185,6 +220,9 @@ if(is_array($employees) && !empty($employees)) {
                 }
                 tr[i].style.display = display;
             }
+        }
+        function exportToExcel() {
+            window.location.href = '?page=exportExcel';
         }
 </script>
 

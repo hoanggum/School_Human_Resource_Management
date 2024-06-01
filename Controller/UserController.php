@@ -36,5 +36,8 @@ class UserController {
     public function getUserDetailsById($userId) {
         return $this->userModel->getUserDetailsById($userId);
     }
+    public function updateEmployee($userId, $fullName, $birthday, $gender, $email, $address, $phone, $positionID, $departmentID, $imgPath, $status) {
+        return $this->userModel->updateEmployee($userId, $fullName, $birthday, $gender, $email, $address, $phone, $positionID, $departmentID, $imgPath, $status);
+    }
 }
 ?>
