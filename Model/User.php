@@ -206,7 +206,61 @@ class User extends Db{
             throw $e;
         }
     }
+    public function getPasswordById($userId) {
+        $sql = "SELECT Password FROM users WHERE UserID = :userId";
+        $params = array(':userId' => $userId);
+        return $this->selectQuery($sql, $params);
+    }
+    public function countUsersByRole($roleName) {
+        $sql = "SELECT COUNT(*) AS UserCount FROM users WHERE Role = :roleName";
+        $params = array(':roleName' => $roleName);
+        $result = $this->selectQuery($sql, $params);
+        // Trả về số lượng người dùng có vai trò là roleName
+        return $result[0]['UserCount'];
+    }
+    public function getUsersByRole($roleName) {
+        $sql = "SELECT * FROM users WHERE Role = :roleName";
+        $params = array(':roleName' => $roleName);
+        return $this->selectQuery($sql, $params);
+    }
+    public function updateUserRole($userID, $role) {
+        $sql = "UPDATE users SET Role = :role WHERE UserID = :userID";
+        $params = array(
+            ':userID' => $userID,
+            ':role' => $role
+        );
+        return $this->updateQuery($sql, $params);
+    }
+    public function storeResetToken($email, $token) {
+        $sql = "INSERT INTO password_resets (email, token) VALUES (:email, :token) ON DUPLICATE KEY UPDATE token = :token";
+        $params = array(
+            ':email' => $email,
+            ':token' => $token
+        );
+        return $this->updateQuery($sql, $params);
+    }
+
+    public function getUserByResetToken($token) {
+        $sql = "SELECT users.* FROM users 
+                INNER JOIN password_resets ON users.Email = password_resets.email 
+                WHERE password_resets.token = :token";
+        $params = array(':token' => $token);
+        return $this->selectQuery($sql, $params);
+    }
+
+    // Hàm xóa reset token
+    public function deleteResetToken($token) {
+        $sql = "DELETE FROM password_resets WHERE token = :token";
+        $params = array(':token' => $token);
+        return $this->updateQuery($sql, $params);
+    }
+    public function getUserByEmail($email) {
+        $sql = "SELECT * FROM users WHERE Email = :email";
+        $params = array(':email' => $email);
+        return $this->selectQuery($sql, $params);
+    }
     
-    
+
+
 }
 ?>

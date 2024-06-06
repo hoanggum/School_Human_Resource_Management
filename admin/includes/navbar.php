@@ -107,10 +107,10 @@
             </a>
             <ul class="sub-menu">
                 <li class="nav-item">
-                    <a href="?page=add_post" title="" class="nav-link">Tạo nhóm quyền</a>
+                    <a href="?page=role" title="" class="nav-link">Tạo nhóm quyền</a>
                 </li>
                 <li class="nav-item">
-                    <a href="?page=list_cat" title="" class="nav-link">Quản lí nhóm quyền</a>
+                    <a href="?page=role" title="" class="nav-link">Quản lí nhóm quyền</a>
                 </li>
             </ul>
         </li>

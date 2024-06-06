@@ -16,7 +16,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($user) {
-        if (md5($password) === $user['Password']) {
+        if($user['Status']=="Đã nghỉ việc"){
+            $response['error'] = "Tài khoản của bạn đã bị vô hiệu hóa.";
+        }
+        else if (md5($password) === $user['Password']) {
             $_SESSION['UserID'] = $user['UserID'];
             $_SESSION['FullName'] = $user['FullName'];
             $_SESSION['Role'] = $user['Role'];

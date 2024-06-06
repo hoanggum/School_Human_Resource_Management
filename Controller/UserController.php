@@ -39,5 +39,32 @@ class UserController {
     public function updateEmployee($userId, $fullName, $birthday, $gender, $email, $address, $phone, $positionID, $departmentID, $imgPath, $status) {
         return $this->userModel->updateEmployee($userId, $fullName, $birthday, $gender, $email, $address, $phone, $positionID, $departmentID, $imgPath, $status);
     }
+    public function getPasswordById($userId) {
+        return $this->userModel->getPasswordById($userId);
+    }
+    public function countUsersByRole($roleName) {
+        return $this->userModel->countUsersByRole($roleName);
+    }
+    public function getUsersByRole($roleName) {
+        return $this->userModel->getUsersByRole($roleName);
+    }
+    public function updateUserRole($userID, $role) {
+        return $this->userModel->updateUserRole($userID, $role);
+    }
+    public function storeResetToken($email, $token) {
+        return $this->userModel->storeResetToken($email, $token);
+    }
+
+    public function getUserByResetToken($token) {
+        return $this->userModel->getUserByResetToken($token);
+    }
+
+    public function deleteResetToken($token) {
+        return $this->userModel->deleteResetToken($token);
+    }
+
+    public function getUserByEmail($email) {
+        return $this->userModel->getUserByEmail($email);
+    }
 }
 ?>

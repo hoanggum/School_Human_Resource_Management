@@ -2,10 +2,10 @@
 
 
 include_once '../Controller/UserController.php';
-
 $userController = new UserController();
 $userID = $_SESSION['UserID'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $fullName = $_POST['full-name'];
     $userName = $_POST['user-name'];
     $userEmail = $_POST['user-email'];

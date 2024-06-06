@@ -6,6 +6,7 @@ $positions = $positionController->getAllPositions();
 ?>
 <div class="container">
     <h1 class="mb-4">Danh sách chức vụ</h1>
+    <a href="?page=createPosition" class="btn btn-dark">Thêm chức vụ mới</a>
     <div class="table-responsive">
 
     <table class="table table-striped" id="tblPosition">

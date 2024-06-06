@@ -32,5 +32,8 @@ class DegreeController {
     public function getAllDegreesWithFullName() {
         return $this->degreeModel->getAllDegreesWithFullName();
     }
+    public function getDegreesByUserID($userID){
+        return $this->degreeModel->getDegreesByUserID($userID);
+    }
 }
 ?>

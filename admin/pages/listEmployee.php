@@ -134,12 +134,12 @@ if(is_array($employees) && !empty($employees)) {
         </div>
         <h1>Danh sách nhân viên</h1>
         <div class="import-export-container">
-        <form action="?page=importData" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" id="file" accept=".xlsx, .xls">
-            <button type="submit" name="importSubmit">Import</button>
-        </form>
-        <button type="button" onclick="exportToExcel()">Export</button>
-    </div>
+            <form action="?page=importData" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" id="file" accept=".xlsx, .xls">
+                <button type="submit" name="importSubmit">Import</button>
+            </form>
+            <button type="button" onclick="exportToExcel()">Export</button>
+        </div>
         <div class="table-responsive">
 
         <table class="table" id="employeeTable">
@@ -222,6 +222,7 @@ if(is_array($employees) && !empty($employees)) {
             }
         }
         function exportToExcel() {
+            
             window.location.href = '?page=exportExcel';
         }
 </script>

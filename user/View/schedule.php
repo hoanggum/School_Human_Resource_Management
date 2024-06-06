@@ -111,8 +111,10 @@ $scheduleData = $scheduleController->getScheduleOfMonth($userID, $currentMonth,$
       </div>
     </div>
 </body>
+
 </html>
 <script>
+
 function filterSchedule(type) {
     $('.employee-item').hide(); // Ẩn tất cả các lịch
     if (type === 'all') {

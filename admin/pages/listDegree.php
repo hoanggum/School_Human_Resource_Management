@@ -8,6 +8,10 @@ $degreeController = new DegreeController();
 $degrees = $degreeController->getAllDegreesWithFullName();
 ?>
 <div class="container mt-5">
+<h1 class="mt-5 mb-4" style="text-align: center; color: rgb(0, 9, 35); font-size: 28px; font-weight: bold;">Danh sách Kỹ luật</h1>
+    <button type="button" class="btn btn-dark" style="width: 6%; height: 12%;" onclick="window.location.href = '?page=createDegree'">
+            <i class="fas fa-plus"></i> <!-- Biểu tượng dấu cộng (+) -->
+    </button>
     <h1 class="mb-4">List of Degrees</h1>
     <div class="table-responsive">
         <table class="table" id="degreeTable">

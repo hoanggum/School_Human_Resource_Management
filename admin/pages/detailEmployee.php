@@ -3,9 +3,9 @@
 include_once '../Controller/UserController.php';
 include_once '../Controller/DepartmentController.php'; 
 include_once '../Controller/PositionController.php';
-
+include_once '../Controller/DegreeController.php';
 $userController = new UserController();
-
+$degreeController = new DegreeController();
 // Get the user ID from the query string
 $userId = isset($_GET['userId']) ? intval($_GET['userId']) : 0;
 
@@ -19,6 +19,7 @@ if ($userId > 0) {
         echo "No details found for the specified user.";
         exit;
     }
+    $degrees = $degreeController->getDegreesByUserID($userId);
 } else {
     echo "Invalid user ID.";
     exit;
@@ -143,6 +144,27 @@ $positions = $positionController->getAllPositions();
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
+        .degree-list {
+        margin-top: 20px;
+    }
+
+    .degree-list h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .degree-item {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .degree-details {
+        display: none;
+        margin-top: 10px;
+    }
     </style>
 <div class="container">
         <a href="?page=listEmployee" class="back-btn">&#8592; Back to Employee List</a>
@@ -223,6 +245,22 @@ $positions = $positionController->getAllPositions();
                 </div>
             </div>
         </div>
+        <div class="degree-list">
+            <h2>Degrees</h2>
+            <?php if (!empty($degrees)) : ?>
+                <?php foreach ($degrees as $degree) : ?>
+                    <div class="degree-item" onclick="toggleDegreeDetails(this)">
+                        <p><strong>Tên bằng cấp:</strong> <?php echo htmlspecialchars($degree['DegreeName']); ?></p>
+                        <div class="degree-details">
+                            <p><strong>Ngày cấp:</strong> <?php echo htmlspecialchars($degree['GrantedDate']); ?></p>
+                            <p><strong>Đơn vị cấp:</strong> <?php echo htmlspecialchars($degree['Unit']); ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <p>No degrees found for this user.</p>
+            <?php endif; ?>
+        </div>
     </div>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
@@ -244,3 +282,15 @@ $positions = $positionController->getAllPositions();
         });
     });
 </script> -->
+<script>
+    function toggleDegreeDetails(element) {
+        var details = element.querySelector('.degree-details');
+        if (details) {
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block';
+            } else {
+                details.style.display = 'none';
+            }
+        }
+    }
+</script>

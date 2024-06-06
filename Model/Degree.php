@@ -34,5 +34,10 @@ class Degree extends Db {
 
         return $this->selectQuery($sql);
     }
+    public function getDegreesByUserID($userID) {
+        $sql = "SELECT * FROM degree WHERE UserID = :userID";
+        $params = array(':userID' => $userID);
+        return $this->selectQuery($sql, $params);
+    }
 }
 ?>

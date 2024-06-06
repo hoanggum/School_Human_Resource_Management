@@ -1,0 +1,9 @@
+Link Website: https://novelnest.id.vn/
+-----------------------------------
+Account Admin
+Username: admin
+Password: 1234567
+------------------------------------
+Account User
+Username: tructran41
+Password: 123456

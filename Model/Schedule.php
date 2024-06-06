@@ -7,6 +7,9 @@ class Schedule extends Db {
     }
 
     public function addSchedule($startDate, $endDate, $workPlace, $descriptions, $userId) {
+        if ($this->checkScheduleConflict($userId, $startDate, $endDate)) {
+            return false; // Conflict found
+        }
         $sql = "INSERT INTO schedule (StartDate, EndDate, WorkPlace, Descriptions, UserID) VALUES (:startDate, :endDate, :workPlace, :descriptions, :userId)";
         $params = array(
             ':startDate' => $startDate,
@@ -76,7 +79,22 @@ class Schedule extends Db {
         );
         return $this->selectQuery($sql, $params);
     }
-    
+    public function checkScheduleConflict($userId, $startDate, $endDate) {
+        $sql = "SELECT COUNT(*) as count 
+                FROM schedule 
+                WHERE UserID = :userId AND (
+                    (StartDate <= :endDate AND EndDate >= :endDate) OR 
+                    (StartDate <= :startDate AND EndDate >= :startDate) OR 
+                    (StartDate >= :startDate AND EndDate <= :endDate)
+                )";
+        $params = array(
+            ':userId' => $userId,
+            ':startDate' => $startDate,
+            ':endDate' => $endDate
+        );
+        $result = $this->selectQuery($sql, $params);
+        return $result[0]['count'] > 0;
+    }
     
 }
 ?>
